@@ -5,6 +5,7 @@ import Lenis from 'lenis'
 import {MES,KN,P,PM,fD,lastRead,buildModel,demo,DEMO_ST} from './lib/data'
 import {DayChart,HourBars,Limits,Stations,fmt} from './components/Charts'
 import Method from './components/Method'
+import About from './components/About'
 gsap.registerPlugin(ScrollTrigger)
 
 const reduced=()=>matchMedia('(prefers-reduced-motion:reduce)').matches
@@ -53,7 +54,7 @@ export default function App(){
  return <>
   <div className="w">
    <nav><b>Aire en Altamira</b><div>
-    {[['#inicio','Inicio'],['#datos','Datos'],['#aprende','Aprende'],['#metodologia','Metodología']].map(([h,t])=><a key={h} href={h} onClick={e=>go(e,h)}>{t}</a>)}</div></nav>
+    {[['#inicio','Inicio'],['#datos','Datos'],['#aprende','Aprende'],['#metodologia','Metodología'],['#nosotros','Nosotros']].map(([h,t])=><a key={h} href={h} onClick={e=>go(e,h)}>{t}</a>)}</div></nav>
    <div className="hero" id="inicio">
     <div>
      <div className="pick">
@@ -102,5 +103,6 @@ export default function App(){
   </div></section>
 
   <Method onData={setData} onReset={()=>setData(makeDemo())}/>
+  <About/>
   <footer><div className="w">Prototipo. Mientras no se carguen lecturas reales, todo lo que ves son datos simulados.</div></footer>
  </>}

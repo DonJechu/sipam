@@ -68,3 +68,10 @@ ul.l li{display:block;padding:2px 0}
 .drop{transition:background .15s,border-color .15s}
 .drop:hover{background:var(--soft);border-color:var(--fg)}
 @media (prefers-reduced-motion:reduce){.d:hover,.br:hover i{transform:none}.fresh{animation:none}*{transition:none!important}}
+
+.lead{max-width:44em}
+.ods{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 36px}.ods span{border:1px solid var(--line);border-radius:99px;padding:3px 12px;font-size:14px}
+.team{list-style:none;margin:0 0 28px;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:28px 24px}
+.av{width:96px;height:96px;overflow:hidden;font-size:22px;border-radius:50%;background:var(--soft);border:1px solid var(--line);display:grid;place-items:center;font-weight:600;color:var(--acc);margin-bottom:10px}
+.av img{width:100%;height:100%;object-fit:cover}
+.team b{display:block}
