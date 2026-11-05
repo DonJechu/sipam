@@ -33,7 +33,7 @@ export default function Landing(){
   <div className="w">
    <nav><Link to="/" className="brand"><img src={import.meta.env.BASE_URL+'favicon.png'} alt="" width="34" height="34"/><b>SIPAM</b></Link><div>
     {[['#como','Cómo lo medimos'],['#color','Qué hacer según el color'],['#equipo','Equipo']].map(([h,t])=><a key={h} href={h} onClick={e=>go(e,h)}>{t}</a>)}
-    <Link to="/datos">Datos</Link></div></nav>
+    <Link to="/datos" className="nav-cta">Datos</Link></div></nav>
    <div className="hero" id="inicio">
     <div>
      <span className="tag">Antes del lanzamiento</span>

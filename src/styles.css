@@ -144,3 +144,6 @@ h2{font-weight:700;letter-spacing:0}
 .ods span{background:none;border:1px solid var(--line);color:var(--fg)}
 .flogo{background:none;box-shadow:none;padding:0;border-radius:0}
 nav .brand{color:var(--fg)}
+nav div{align-items:center}
+nav a.nav-cta{background:var(--acc);color:var(--on);padding:6px 16px;border-radius:8px;font-weight:700}
+nav a.nav-cta:hover{color:var(--on);filter:brightness(1.1)}
