@@ -48,10 +48,10 @@ export default function Datos(){
 
  return <>
   <div className="w">
-   <nav><Link to="/" className="brand"><img src={import.meta.env.BASE_URL+'favicon.png'} alt="" width="34" height="34"/><b>SIPAM</b><span className="sm">Aire en Altamira</span></Link><div>
+  <nav><Link to="/" className="brand"><img src={import.meta.env.BASE_URL+'favicon.png'} alt="" width="34" height="34"/><b>SIPAM</b><span className="sm">Aire en Altamira</span></Link><div>
     <Link to="/">Inicio</Link>
     {[['#datos','Datos'],['#aprende','Aprende'],['#metodologia','Metodología']].map(([h,t])=><a key={h} href={h} onClick={e=>go(e,h)}>{t}</a>)}
-    <Link to="/#equipo" className="nav-cta">Nosotros</Link>
+    <Link to="/#equipo" className="nav-cta">Nosotros</Link></div></nav>
    <div className="hero" id="inicio">
     <div>
      <div className="pick">
