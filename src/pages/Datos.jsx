@@ -1,28 +1,23 @@
 import {useEffect,useMemo,useRef,useState} from 'react'
+import {Link} from 'react-router-dom'
+import {BANDS} from '../lib/bands'
 import gsap from 'gsap'
 import {ScrollTrigger} from 'gsap/ScrollTrigger'
 import Lenis from 'lenis'
-import {MES,KN,P,PM,fD,lastRead,buildModel,demo,DEMO_ST} from './lib/data'
-import {DayChart,HourBars,Limits,Stations,fmt} from './components/Charts'
-import Method from './components/Method'
-import About from './components/About'
+import {MES,KN,P,PM,fD,lastRead,buildModel,demo,DEMO_ST} from '../lib/data'
+import {DayChart,HourBars,Limits,Stations,fmt} from '../components/Charts'
+import Method from '../components/Method'
 gsap.registerPlugin(ScrollTrigger)
 
 const reduced=()=>matchMedia('(prefers-reduced-motion:reduce)').matches
 const makeDemo=()=>buildModel(demo(),DEMO_ST,'demo')
-const BANDS=[
- ['Buena','Riesgo mínimo o nulo. Disfruta las actividades al aire libre.'],
- ['Aceptable','Riesgo bajo. Las personas sensibles pueden notar irritación o tos y conviene que reduzcan el ejercicio intenso afuera.'],
- ['Mala','Más riesgo de síntomas respiratorios en personas sensibles: que eviten el ejercicio vigoroso y descansen más. La población general puede seguir con sus actividades.'],
- ['Muy mala','Puede haber daño a la salud. Las personas sensibles deben evitar la actividad física al aire libre y todos conviene que la reduzcan.'],
- ['Extremadamente mala','Cualquiera puede resultar afectado. Permanece en interiores, reprograma actividades y consulta a tu médico si hay síntomas.']]
-
 function Count({n}){const r=useRef()
  useEffect(()=>{const el=r.current;el.textContent=n;if(reduced())return
   const o={v:0},t=gsap.to(o,{v:n,duration:1.2,ease:'power2.out',onUpdate:()=>{el.textContent=Math.round(o.v)}});return()=>t.kill()},[n])
  return <span ref={r}/>}
 
-export default function App(){
+export default function Datos(){
+ useEffect(()=>{document.title='Datos · SIPAM Aire en Altamira'},[])
  const [model,setModel]=useState(makeDemo),[si,setSi]=useState(0),[mi,setMi]=useState(null),[pid,setPid]=useState('pm25'),[dayS,setDay]=useState(null)
  const [hc,setHc]=useState(null),[hd,setHd]=useState(null),[ver,setVer]=useState(0),lenis=useRef(null)
  const mo=model.months[mi??model.months.length-1]
@@ -53,8 +48,10 @@ export default function App(){
 
  return <>
   <div className="w">
-   <nav><b>Aire en Altamira</b><div>
-    {[['#inicio','Inicio'],['#datos','Datos'],['#aprende','Aprende'],['#metodologia','Metodología'],['#nosotros','Nosotros']].map(([h,t])=><a key={h} href={h} onClick={e=>go(e,h)}>{t}</a>)}</div></nav>
+   <nav><Link to="/" className="brand"><img src={import.meta.env.BASE_URL+'favicon.png'} alt="" width="34" height="34"/><b>SIPAM</b><span className="sm">Aire en Altamira</span></Link><div>
+    <Link to="/">Inicio</Link>
+    {[['#datos','Datos'],['#aprende','Aprende'],['#metodologia','Metodología']].map(([h,t])=><a key={h} href={h} onClick={e=>go(e,h)}>{t}</a>)}
+    <Link to="/#equipo">Nosotros</Link></div></nav>
    <div className="hero" id="inicio">
     <div>
      <div className="pick">
@@ -103,6 +100,5 @@ export default function App(){
   </div></section>
 
   <Method onData={setData} onReset={()=>setData(makeDemo())}/>
-  <About/>
   <footer><div className="w">Prototipo. Mientras no se carguen lecturas reales, todo lo que ves son datos simulados.</div></footer>
  </>}

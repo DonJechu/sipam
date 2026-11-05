@@ -1,5 +1,7 @@
-# Aire en Altamira (React + Vite)
+# SIPAM · Aire en Altamira (React + Vite)
+Rutas: `/` presentación (antes del lanzamiento) y `/datos` el sitio de datos.
     npm install
-    npm run dev      # desarrollo
-    npm run build    # produce dist/
-Estructura: `src/lib/data.js` (clasificación NOM-172, promedios, validación del Excel y datos DEMO), `src/components/` (gráficas y metodología), `src/App.jsx` (estado, portada y movimiento con GSAP + Lenis).
+    npm run dev
+    npm run build
+Pendientes editables en `src/lib/site.js` (correo, formulario, foto, fuentes) y `src/lib/team.js` (equipo).
+`vercel.json` redirige todas las rutas a `index.html` para que `/datos` funcione al recargar.
